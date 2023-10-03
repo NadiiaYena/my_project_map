@@ -3,10 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZyc2aQ5qip9lNOwcRV_DuvxkqwXwV0BE&&region=uk&language=en&callback=initMap&v=weekly"
+    async defer
+    ></script>
+
+    <title>Interactive map</title>
+    
 </head>
 <body>
+    <div id="main">
+        <div id="header">
+            
+        </div>
+        <div id="sidePanel">
+            <div>
+                <img alt="Ukrainian Gerb" src="/img/gerb.svg" class="gerb"/>
+            </div>
+            <div class="sidePanel-medium">
+                <img alt="point" src="/img/point.svg" class="point" id="getLocationButton"/>
+                <img alt="grid" src="/img/grid.svg" class="grid"/>
+
+            </div>
+            <div>
+                <img alt="download" src="/img/download.svg" class="downloadButton"/>
+            </div>
+        </div>
+        <div id="map">
+           <!-- <img alt="map" src="/img/maps.svg"/> -->
+        </div>
+        <div id="filterDownMain"></div>
+        <div id="filtr">
+            <div class="search">
+                <div class="inputBlock">
+                    <input />
+                </div>
+                <div>
+                    <img alt="filter" src="/img/filters1.svg" class="filterImg"/>
+                </div>
+            </div>
+            <div class="filters">
+                <h2>Filters</h2>
+                <div class="filterTypes1">
+                    <h3>Crime Type</h3>
+                    <div class="filterType" id="filterType">
+                        <!-- <div class="item">
+                            <input type="checkbox"  id="murder" class="check"/>
+                            <label for="murder">Murder</label>
+                        </div>
+                        <div class="item">
+                            <input type="checkbox" id="abduction" class="check"/>
+                            <label for="abduction">Abduction</label>
+                        </div>
+
+                        <div class="item">
+                            <input type="checkbox" id="torture" class="check"/>
+                            <label for="torture">Torture / inhuman treatment</label>
+                        </div>
+
+                        <div class="item">
+                            <input type="checkbox" id="sexualAbuse" class="check"/>
+                            <label for="sexualAbuse">Sexual abuse</label>
+                        </div>
+
+                        <div class="item">
+                            <input type="checkbox" id="childAbuse" class="check"/>
+                            <label for="childAbuse">Child abuse / abduction</label>
+                        </div> -->
+                        <!-- <div class="item">
+                            <input type="checkbox" class="all" id="allCheckbox"/>
+                            <label for="allCheckbox">All</label>
+                        </div>  -->
+                    </div>
+                </div>
+                <div class="filterRegion">
+                    <h3>Region</h3>
+                    <div id="dropdown-region"></div>
+                </div>
+                <div class="filtercity">
+                    <h3>City/Town</h3>
+                    <div id="dropdown-city"></div>
+
+                </div>
+            </div>
+
+            <div class="result-block">
+                <h3 class="result">Result:</h3>
+                <p class="result-num"></p>
+            </div>
+
+            <div class="buttons-block">
+                <div class="button-murder"><p>Murder</p></div>
+                <div class="button-states"><p>All States</p></div>
+                <div class="button-citis"><p>All Cities / Towns</p></div>
+            </div>
+
+            <div class="button-clear" id="clearFilter">
+                <img src="/img/cansel.svg"/><p>Clear All Filters</p>
+            </div>
+
+        </div>
+
+    </div>
     
-    <script src="index.js"></script>
+    <!-- <script type="module" src="main.js"></script> -->
+    <script src="map.js"></script>
+    <script type="module" src="dropdown.js"></script>
+    <script type="module" src="filterType.js"></script>
+    <script type="module" src="filterCrimeDown.js" ></script>
+    <!-- <script type="module" src="addMarker.js"></script> -->
+
+
+
+
+
 </body>
 </html>
