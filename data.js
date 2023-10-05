@@ -1,14 +1,14 @@
 const events = '/data/events.json'
-console.log(events)
+// console.log(events)
 const names = '/data/names.json'
-console.log(names)
+// console.log(names)
 
 
 export async function getEvents() {
     try {
         const response = await fetch(events)
         const data = await response.json();
-        console.log(data)
+        // console.log(data)
         return data
 }
     catch(error) {
@@ -21,6 +21,8 @@ export async function getEvents() {
     try {
         const response = await fetch(names);
         const data = await response.json();
+
+        // console.log('getCrimeType data', data, data[0].affected_type)
         const obj = data[0].affected_type;
         const crimeType = [];
         

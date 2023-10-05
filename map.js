@@ -1,369 +1,664 @@
 // "use strict";
-// import { getCrimeType, getEvents } from './data.js';
 // gogle.maps.event.addDomListener(window, 'load', initMap)
 
 async function initMap() {
-//   const myLatLng = {
-//     lat: 50.450050354003906,
-//     lng: 30.524044036865234
-//   };
    let map = new google.maps.Map(document.getElementById("map"), {
-    zoom: 5,
-    center: new google.maps.LatLng(50.4813883,30.5715489,9.86),
-    fullscreenControl: false,
-    zoomControl: true,
-    streetViewControl: false,
-    language: 'en',
-    styles: [
-        {
-          "elementType": "geometry",
-          "stylers": [
+        zoom: 7,
+        center: new google.maps.LatLng(50.4813883,30.5715489,9.86),
+        fullscreenControl: false,
+        zoomControl: true,
+        streetViewControl: false,
+        language: 'en',
+        styles: [
             {
-              "color": "#212121"
-            }
-          ]
-        },
-        {
-          "elementType": "labels.icon",
-          "stylers": [
+            "elementType": "geometry",
+            "stylers": [
+                {
+                "color": "#212121"
+                }
+            ]
+            },
             {
-              "visibility": "off"
-            }
-          ]
-        },
-        {
-          "elementType": "labels.text.fill",
-          "stylers": [
+            "elementType": "labels.icon",
+            "stylers": [
+                {
+                "visibility": "off"
+                }
+            ]
+            },
             {
-              "color": "#757575"
-            }
-          ]
-        },
-        {
-          "elementType": "labels.text.stroke",
-          "stylers": [
+            "elementType": "labels.text.fill",
+            "stylers": [
+                {
+                "color": "#757575"
+                }
+            ]
+            },
             {
-              "color": "#212121"
-            }
-          ]
-        },
-        {
-          "featureType": "administrative",
-          "elementType": "geometry",
-          "stylers": [
+            "elementType": "labels.text.stroke",
+            "stylers": [
+                {
+                "color": "#212121"
+                }
+            ]
+            },
             {
-              "color": "#757575"
-            }
-          ]
-        },
-        {
-          "featureType": "administrative.country",
-          "elementType": "labels.text.fill",
-          "stylers": [
+            "featureType": "administrative",
+            "elementType": "geometry",
+            "stylers": [
+                {
+                "color": "#757575"
+                }
+            ]
+            },
             {
-              "color": "#9e9e9e"
-            }
-          ]
-        },
-        {
-          "featureType": "administrative.land_parcel",
-          "stylers": [
+            "featureType": "administrative.country",
+            "elementType": "labels.text.fill",
+            "stylers": [
+                {
+                "color": "#9e9e9e"
+                }
+            ]
+            },
             {
-              "visibility": "off"
-            }
-          ]
-        },
-        {
-          "featureType": "administrative.locality",
-          "elementType": "labels.text.fill",
-          "stylers": [
+            "featureType": "administrative.land_parcel",
+            "stylers": [
+                {
+                "visibility": "off"
+                }
+            ]
+            },
             {
-              "color": "#bdbdbd"
-            }
-          ]
-        },
-        {
-          "featureType": "poi",
-          "elementType": "labels.text.fill",
-          "stylers": [
+            "featureType": "administrative.locality",
+            "elementType": "labels.text.fill",
+            "stylers": [
+                {
+                "color": "#bdbdbd"
+                }
+            ]
+            },
             {
-              "color": "#757575"
-            }
-          ]
-        },
-        {
-          "featureType": "poi.park",
-          "elementType": "geometry",
-          "stylers": [
+            "featureType": "poi",
+            "elementType": "labels.text.fill",
+            "stylers": [
+                {
+                "color": "#757575"
+                }
+            ]
+            },
             {
-              "color": "#181818"
-            }
-          ]
-        },
-        {
-          "featureType": "poi.park",
-          "elementType": "labels.text.fill",
-          "stylers": [
+            "featureType": "poi.park",
+            "elementType": "geometry",
+            "stylers": [
+                {
+                "color": "#181818"
+                }
+            ]
+            },
             {
-              "color": "#616161"
-            }
-          ]
-        },
-        {
-          "featureType": "poi.park",
-          "elementType": "labels.text.stroke",
-          "stylers": [
+            "featureType": "poi.park",
+            "elementType": "labels.text.fill",
+            "stylers": [
+                {
+                "color": "#616161"
+                }
+            ]
+            },
             {
-              "color": "#1b1b1b"
-            }
-          ]
-        },
-        {
-          "featureType": "road",
-          "elementType": "geometry.fill",
-          "stylers": [
+            "featureType": "poi.park",
+            "elementType": "labels.text.stroke",
+            "stylers": [
+                {
+                "color": "#1b1b1b"
+                }
+            ]
+            },
             {
-              "color": "#2c2c2c"
-            }
-          ]
-        },
-        {
-          "featureType": "road",
-          "elementType": "labels.text.fill",
-          "stylers": [
+            "featureType": "road",
+            "elementType": "geometry.fill",
+            "stylers": [
+                {
+                "color": "#2c2c2c"
+                }
+            ]
+            },
             {
-              "color": "#8a8a8a"
-            }
-          ]
-        },
-        {
-          "featureType": "road.arterial",
-          "elementType": "geometry",
-          "stylers": [
+            "featureType": "road",
+            "elementType": "labels.text.fill",
+            "stylers": [
+                {
+                "color": "#8a8a8a"
+                }
+            ]
+            },
             {
-              "color": "#373737"
-            }
-          ]
-        },
-        {
-          "featureType": "road.highway",
-          "elementType": "geometry",
-          "stylers": [
+            "featureType": "road.arterial",
+            "elementType": "geometry",
+            "stylers": [
+                {
+                "color": "#373737"
+                }
+            ]
+            },
             {
-              "color": "#3c3c3c"
-            }
-          ]
-        },
-        {
-          "featureType": "road.highway.controlled_access",
-          "elementType": "geometry",
-          "stylers": [
+            "featureType": "road.highway",
+            "elementType": "geometry",
+            "stylers": [
+                {
+                "color": "#3c3c3c"
+                }
+            ]
+            },
             {
-              "color": "#4e4e4e"
-            }
-          ]
-        },
-        {
-          "featureType": "road.local",
-          "elementType": "labels.text.fill",
-          "stylers": [
+            "featureType": "road.highway.controlled_access",
+            "elementType": "geometry",
+            "stylers": [
+                {
+                "color": "#4e4e4e"
+                }
+            ]
+            },
             {
-              "color": "#616161"
-            }
-          ]
-        },
-        {
-          "featureType": "transit",
-          "elementType": "labels.text.fill",
-          "stylers": [
+            "featureType": "road.local",
+            "elementType": "labels.text.fill",
+            "stylers": [
+                {
+                "color": "#616161"
+                }
+            ]
+            },
             {
-              "color": "#757575"
-            }
-          ]
-        },
-        {
-          "featureType": "water",
-          "elementType": "geometry",
-          "stylers": [
+            "featureType": "transit",
+            "elementType": "labels.text.fill",
+            "stylers": [
+                {
+                "color": "#757575"
+                }
+            ]
+            },
             {
-              "color": "#000000"
-            }
-          ]
-        },
-        {
-          "featureType": "water",
-          "elementType": "labels.text.fill",
-          "stylers": [
+            "featureType": "water",
+            "elementType": "geometry",
+            "stylers": [
+                {
+                "color": "#000000"
+                }
+            ]
+            },
             {
-              "color": "#3d3d3d"
+            "featureType": "water",
+            "elementType": "labels.text.fill",
+            "stylers": [
+                {
+                "color": "#3d3d3d"
+                }
+            ]
             }
-          ]
-        }
-      ]
-  });
+        ]
+    });
 
-  const iconBase = 'img/'
-  const icon = {
-    19 : {
-        url: iconBase +'2.png', //"Human losses" 
-        scaledSize: new google.maps.Size(15, 15)
-     }, 
-    30 : {
-        url: iconBase +'1.png', // "Death of an individual",
-        scaledSize: new google.maps.Size(15, 15)
-    },
-    31 : {
-        url: iconBase +'3.png',  //"Those wounded or whose health was otherwise damaged",
-        scaledSize: new google.maps.Size(15, 15)
-    },
+    const iconBase = 'img/'
+    const initialSize = new google.maps.Size(3, 3);
+    const icon = {
+        19 : {
+            url: iconBase +'2.png', //"Human losses" 
+            scaledSize: initialSize
+        }, 
+        30 : {
+            url: iconBase +'1.png', // "Death of an individual",
+            scaledSize: initialSize
+        },
+        31 : {
+            url: iconBase +'3.png',  //"Those wounded or whose health was otherwise damaged",
+            scaledSize: initialSize
+        },
 
-    32 : {
-        url: iconBase +'4.png',  //"Disappearance of an individual",
-        scaledSize: new google.maps.Size(15, 15)
-    },
+        32 : {
+            url: iconBase +'4.png',  //"Disappearance of an individual",
+            scaledSize: initialSize
+        },
 
-    33 : {
-        url: iconBase +'5.png',  //"Rape",
-        scaledSize: new google.maps.Size(15, 15)
-    },
+        33 : {
+            url: iconBase +'5.png',  //"Rape",
+            scaledSize: initialSize
+        },
 
-    34 : {
-        url: iconBase +'6.png',  //"Violation of other rights"
-    scaledSize: new google.maps.Size(15, 15)
-    },
+        34 : {
+            url: iconBase +'6.png',  //"Violation of other rights"
+        scaledSize: initialSize
+        },
+    }
+    const newSize = new google.maps.Size(17, 17); 
 
-  }
+    const label = null
+    const markers = []
 
-//  const markers = []
+    const names = await getCrimeType();
+    const position = await getEvents();
+    const events = []
+    const affected_names = []
+
+
+    for (let el of names.crimeType){
+        // console.log(el)
+        affected_names.push(el)
+    }
+    for (let el of names.eventTypes){
+        events.push(el)
+    }
+
   const items = document.getElementsByClassName('itemFilterDown')
-  console.log('itemFilterDown', items)
-  for ( let i of items) {
-    i.addEventListener('click', function () {
-        console.log('add fjfhfhfhfj marker!!!!!')
+
+    for ( let i of items) {
+        // i.addEventListener('click', function () {
+        console.log('add all markers!!!!!')
         const idItem = i.id.split('-')
-        const name = i.id
+        // const name = i.id
         const id = idItem[0]
-        const affected_name = idItem[1]
+        // const affected_name = idItem[1]
         console.log('idItem', idItem, id)
-        const position = showMarker(name, id) 
-        const events = []
-        const affected_names = []
-        const names = getCrimeType()
-        names.then(data=>{
-            console.log('names data', data.crimeType, data.eventTypes)
-            
-                console.log( 'data.crimeType', data.crimeType)
-                for (let el of data.crimeType){
-                    console.log(el)
-                    affected_names.push(el)
-                }
-                for (let el of data.eventTypes){
-                    events.push(el)
-                }
-
-            
-            console.log('event and affected_name',  events, affected_names)
-        }).catch (error => {
-            // Обробка помилок, якщо вони виникли під час виконання проміса
-            console.error(error);
-          });
-        console.log('names', names)
-        
-        console.log('position', position)
-        position.then(data => {
-            // data - це масив об'єктів, який ви отримали з проміса
-            console.log(data);
-            for (let el of data) {
-                console.log('el', el)
-                console.log('icon', icon[el.affected_type])
-                const lat = el.lat 
-                const lng = el.lon 
-                const numberEvent = el.event
-
-                let eventName = ''
-                for( let el of events) {
-                    // console.log('el of events', Number(el.event.id), numberEvent, el.event.name)
-                    if(Number(el.event.id) == numberEvent){
-                        console.log('eventName = el.event.name')
-                        eventName = el.event.name
-                        console.log('eventName', eventName)
+        const positionForMarkers = []
+        // let region = null
+        for( let key in  position) {
+            // region = key
+            // console.log('value', data, key)
+            if (Array.isArray(position[key])) {
+                for (const value of position[key]) {
+                    // console.log(value.affected_type);
+                    if(value.affected_type) {
+                        // console.log(value);
+                        if (value.affected_type === Number(id)) {
+                            const val = {...value, region: key}
+                            // console.log('pushhhhhhh', value.affected_type === Number(id))
+                            positionForMarkers.push(val)
+                        }
                     }
                 }
-
-                // const eventName = events[el.event] 
-                console.log('eventName', eventName)
-
-                
-                const marker = new google.maps.Marker({
-
-                    position: new google.maps.LatLng(lat, lng),
-                    icon: icon[el.affected_type],
-                    map: map,
-                    // title: 'My place',
-                    type: 'info',
-                    // label: {
-                        // text: eventName,
-                        // color: 'white',
-                    // }
-                    title: eventName
-                  });
+                    
             }
-            // console.log('marker', marker)
-          }).catch(error => {
-            // Обробка помилок, якщо вони виникли під час виконання проміса
-            console.error(error);
-          });
-        // const marker = new google.maps.Marker({
+        }
+            
+        // console.log('positionForMarkers',positionForMarkers)
 
-        //     position: userLatLng,
-        //     map: map,
-        //     title: 'My place'
-        //   });
 
-    })
-  
-  
-  }
-//спочатку додати маркери до групи
-  document.getElementById('clearFilter').addEventListener( 'click', function(){
-    console.log('clear markers')
-    for (let i = 0; i < markers.length; i++) {
-        markers[i].setMap(null);
+        for (let el of positionForMarkers) {
+            // console.log('add marker!', el)
+            // console.log('icon', icon[el.affected_type])
+            const lat = el.lat 
+            const lng = el.lon 
+            const numberEvent = el.event
+            // console.log('lat lng numberEvent', lat, lng, numberEvent)
+
+            let eventName = ''
+            for( let el of events) {
+                // console.log('el of events', Number(el.event.id), numberEvent, el.event.name)
+                if(Number(el.event.id) == numberEvent){
+                    // console.log('eventName = el.event.name')
+                    eventName = el.event.name
+                    // console.log('eventName', eventName)
+                }
+            }
+
+            // addMarker(lat, lng, icon, eventName)
+            const marker = new google.maps.Marker({
+
+                position: new google.maps.LatLng(lat, lng),
+                icon: icon[el.affected_type],
+                map: map,
+                // title: 'My place',
+                type: el.region,
+                label: label,
+                title: eventName,
+                id: el.affected_type
+            });
+            // console.log('marker added')
+            markers.push(marker)
+        }
+console.log(markers)
+
+        i.addEventListener('click', function () {
+            console.log('click on button', i.id)
+            const idItem = i.id.split('-')
+            const id = idItem[0]*1
+            // console.log('id-',id )                
+
+            // const newSize = new google.maps.Size(17, 17); 
+
+            markers.map(item=> {
+                let itemId = item.id
+                // console.log('markers map for marker, item.id - ', item.id,' id-,',id)
+                if (itemId == id) {
+                    // console.log('item == id  change size big', item.id,id )                
+                    item.setIcon({
+                        url: icon[id].url,
+                        scaledSize: newSize,
+                    })
+                    item.setLabel({
+                        text: id.toString(),
+                        color: 'white'
+                    })
+                } else {
+                    // console.log('item != id change size small', item.id, id )                
+                    item.setIcon({
+                        url: icon[itemId].url,
+                        scaledSize: initialSize, 
+                    })
+                    item.setLabel(null)
+                }
+                // console.log('end level')
+            })
+            
+        })
+
     }
-    
-    // Очищення масиву маркерів
-    markers = [];
-    // markerGroup.clearLayers();
-  })
-  
-
-  document.getElementById('getLocationButton').addEventListener('click', function () {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function (position) {
-          var userLatLng = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude
-          };
-
-          // Створіть новий маркер та встановіть його на карту
-          const marker = new google.maps.Marker({
-
-            position: userLatLng,
-            map: map,
-            title: 'My place'
-          });
 
 
-          // Перемістіть карту до нових координат користувача
-          map.setCenter(userLatLng);
-        });
-      } else {
-        alert('Geolocation is not supported in your browser.');
-      }
-})
+    const dropdownItems = document.querySelectorAll('.dropdown-item');
+const checkboxes = document.querySelectorAll('.check');
+const allCheck = document.getElementById('allCheckbox');
+const buttonRegion = document.getElementById('All States');
+// const markers = []; // Припустимо, що у вас є масив з маркерами
+
+let selectedValueRegion = null;
+let numberCrime = null;
+let itemCheck;
+
+
+dropdownItems.forEach(item => {
+    item.addEventListener('click', () => {
+        console.log('dropdownItems-', item.textContent )
+        selectedValueRegion = item.textContent;
+        buttonRegion.textContent = selectedValueRegion;
+        updateMarkers();
+    });
+});
+
+checkboxes.forEach(check => {
+    check.addEventListener('click', () => {
+        itemCheck = check.checked
+        numberCrime = parseInt(check.id.split('-')[0]);
+        // console.log('itemCheck numberCrime', itemCheck, numberCrime)
+
+        updateMarkers();
+    });
+});
+
+allCheck.addEventListener('click', () => {
+    checkboxes.forEach(check => {
+        check.checked = allCheck.checked;
+    });
+    numberCrime = allCheck.checked ? null : parseInt(checkboxes[0].id.split('-')[0]);
+    updateMarkers();
+});
+
+function updateMarkers() {
+    markers.forEach(item => {
+        for (let check of checkboxes) {
+            numberCrime = parseInt(check.id.split('-')[0]);
+
+            if (selectedValueRegion && item.type === selectedValueRegion) {
+                console.log(selectedValueRegion, item.type)
+
+                if (item.id === numberCrime && check.checked && !item.label) {
+                    item.setIcon({
+                        url: icon[item.id].url,
+                        scaledSize: newSize,
+                    });
+                    item.setLabel({
+                        text: item.id.toString(),
+                        color: 'white',
+                    });
+                } else if (item.id === numberCrime && !check.checked && item.label){
+                    item.setIcon({
+                        url: icon[item.id].url,
+                        scaledSize: initialSize,
+                    });
+                    item.setLabel(null);
+                // } else {
+                //     item.setIcon({
+                //         url: icon[item.id].url,
+                //         scaledSize: newSize,
+                //     });
+                //     item.setLabel({
+                //         text: item.id.toString(),
+                //         color: 'white',
+                //     });
+                }
+            }
+                else if(!selectedValueRegion){
+                    console.log('!selectedValueRegion-', !selectedValueRegion)
+                if (item.id === numberCrime && check.checked && !item.label) {
+                    item.setIcon({
+                        url: icon[item.id].url,
+                        scaledSize: newSize,
+                    });
+                    item.setLabel({
+                        text: item.id.toString(),
+                        color: 'white',
+                    });
+                } else if (item.id === numberCrime && !check.checked && item.label){
+                    item.setIcon({
+                        url: icon[item.id].url,
+                        scaledSize: initialSize,
+                    });
+                    item.setLabel(null);
+                }
+
+        } 
+        else {
+            item.setIcon({
+                url: icon[item.id].url,
+                scaledSize: initialSize,
+            });
+            item.setLabel(null);
+        }
+    }
+    });
 }
 
 
+// Додаємо обробник події для кнопки "Очистити фільтр"
+document.getElementById('clearFilter').addEventListener('click', () => {
+    selectedValueRegion = null;
+    numberCrime = null;
+    buttonRegion.textContent = buttonRegion.id;
+    checkboxes.forEach(check => {
+        check.checked = false;
+    });
+    allCheck.checked = false;
+    updateMarkers();
+});
+
+  
+//     const dropdownItems = document.getElementsByClassName('dropdown-item')
+//     let selectedValueRegion = null
+//     let nubmerCrime = null
+//     console.log('selectedValueRegion', selectedValueRegion)
+//     for (let item of dropdownItems) {
+//         item.addEventListener('click', ()=>{
+//             selectedValueRegion = item.textContent;
+//             // console.log(selectedValue);
+//             for( let key in  position) {
+//                 if( key == selectedValueRegion) { 
+//                     markers.map(item=>{
+//                         // console.log('key - item', key, item.type)
+//                         if(key == item.type){
+//                             item.setIcon({
+//                                 url: icon[item.id].url,
+//                                 scaledSize: newSize,
+//                             })
+//                             item.setLabel({
+//                                 text: item.id.toString(),
+//                                 color: 'white'
+//                             })
+//                         } else { 
+//                         item.setIcon({
+//                             url: icon[item.id].url,
+//                             scaledSize: initialSize, 
+//                         })
+//                         item.setLabel(null)
+//                         }
+//                     })
+//                 }
+
+//             }
+//         })
+//     }
+
+//     const checkboxes = document.getElementsByClassName('check')
+//     console.log('checkboxes', checkboxes)
+//     for( let check of checkboxes) {
+//         check.addEventListener('click', function() {
+//             console.log(check.id, 'checked:', check.checked)
+//             const idItem = check.id.split('-')
+//             const id = idItem[0]*1
+//             nubmerCrime = id
+//             console.log(id, 'check')
+//             if (selectedValueRegion){
+//                 console.log('selectedValueRegion', selectedValueRegion)
+//                 markers.map(item=>{
+//                     if(id == item.id && selectedValueRegion == item.type){
+//                         console.log('item', item.id, !item.label)
+//                         if(check.checked && !item.label){ 
+//                                     item.setIcon({
+//                                         url: icon[id].url,
+//                                         scaledSize: newSize,
+//                                     })
+//                                     item.setLabel({
+//                                         text: item.id.toString(),
+//                                         color: 'white'
+//                                     })
+//                         } else if (check.checked && item.label){
+//                             return
+//                         } else if(!check.checked && item.label){
+//                             item.setIcon({
+//                                 url: icon[id].url,
+//                                 scaledSize: initialSize, 
+//                             })
+//                             item.setLabel(null)
+//                         } else {
+//                             return
+//                         }
+//                     } else {
+//                         return
+//                     }
+    
+//                 })
+    
+//             } else {
+//                 markers.map(item=>{
+//                     if(id == item.id){
+//                         console.log('item', item.id, !item.label)
+//                         if(check.checked && !item.label){ 
+//                                     item.setIcon({
+//                                         url: icon[id].url,
+//                                         scaledSize: newSize,
+//                                     })
+//                                     item.setLabel({
+//                                         text: item.id.toString(),
+//                                         color: 'white'
+//                                     })
+//                         } else if (check.checked && item.label){
+//                             return
+//                         } else if(!check.checked && item.label){
+//                             item.setIcon({
+//                                 url: icon[id].url,
+//                                 scaledSize: initialSize, 
+//                             })
+//                             item.setLabel(null)
+//                         } else {
+//                             return
+//                         }
+//                     } else {
+//                         return
+//                     }
+    
+//                 })
+    
+
+//             }
+
+      
+//         })
+//     }
+
+//     const allCheck = document.getElementById('allCheckbox')
+//     allCheck.addEventListener('click', function(){
+//         console.log('allCheck', allCheck, allCheck.checked)
+//         markers.map(item=>{
+//             if(allCheck.checked && !item.label){
+//                 console.log('allCheck.checked && !item.label')
+//                 item.setIcon({
+//                     url: icon[item.id].url,
+//                     scaledSize: newSize,
+//                 })
+//                 item.setLabel({
+//                     text: item.id.toString(),
+//                     color: 'white'
+//                 })
+//             } else if(!allCheck.checked && item.label) {
+//                 console.log('!allCheck.checked && item.label')
+
+//                 item.setIcon({
+//                     url: icon[item.id].url,
+//                     scaledSize: initialSize, 
+//                 })
+//                 item.setLabel(null)
+
+//             } else {
+//                 console.log('!allCheck.checked && !item.label')
+
+//                 return
+//             }
+//         })
+//     })
+
+// const buttonRegion = document.getElementById('All States')
+// console.log(buttonRegion.id)
+//     document.getElementById('clearFilter').addEventListener( 'click', function(){
+//         console.log('clear markers')
+//         for( let check of checkboxes) {
+//             check.checked = false
+//         }
+//         for (let item of dropdownItems) {
+//             buttonRegion.textContent = buttonRegion.id
+//         }
+//         allCheck.checked = false
+
+//         markers.map(item=> {
+//             item.setIcon({
+//                 url: icon[item.id].url,
+//                 scaledSize: initialSize, 
+//             }),
+//             item.setLabel(null)
+//         })
+    
+    
+//       })
+        
+    document.getElementById('getLocationButton').addEventListener('click', function () {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                var userLatLng = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                };
+
+                const marker = new google.maps.Marker({
+                    position: userLatLng,
+                    map: map,
+                    title: 'My place'
+                });
+
+                map.setCenter(userLatLng);
+            });
+        } else {
+            alert('Geolocation is not supported in your browser.');
+        }
+    })
+
+
+}
 
 
 
@@ -383,35 +678,21 @@ async function getEvents() {
         const data = await response.json();
         console.log(data)
         return data
-}
+    }
     catch(error) {
         console.error('Помилка завантаження JSON-файлу:', error);
         return []
-  }
+    }
 };
 // назва і айді злочину, назва і айді події
 async function getCrimeType() {
     try {
         const response = await fetch(names);
         const data = await response.json();
-        console.log('data', data)
+        // console.log('data', data)
         const obj = data[0].affected_type;
         const events = data[0].event
-        console.log('events', events)
-        // const crimeType = Object.keys(obj).map((id) => ({
-        //     [id]: {
-        //       description: obj[id],
-        //     },
-        //   }));
-          
-        //   const eventTypes = Object.keys(events).map((id) => ({
-        //     [id]: {
-        //       name: events[id],
-        //     },
-        //   }));
-          
-        //   console.log('crimeType', crimeType);
-        //   console.log('eventTypes', eventTypes);
+        // console.log('events', events)
               
         const crimeType = [];
         const eventTypes = []
@@ -423,99 +704,14 @@ async function getCrimeType() {
         for (const key in events) {
             eventTypes.push({event: {id: key, name: events[key]}})
         }
-        // crimeType.push({'event_name': events})
-        console.log('crimeType', crimeType)
-        console.log('eventTypes', eventTypes)
+        // console.log('crimeType', crimeType)
+        // console.log('eventTypes', eventTypes)
 
         return { crimeType, eventTypes };
-        // return crimeType;
     } catch (error) {
         console.error('Помилка завантаження JSON-файлу:', error);
         return [];
     }
 }
 
-// прослуховую кнопки =====
-
-// document.addEventListener('DOMContentLoaded', async function() {
-
-// const item0 = document.getElementById('item0')
-// console.log('item0', item0)
-
-// item0.addEventListener('click', function () {
-//     console.log('add fjfhfhfhfj marker!!!!!')
-// })
-
-
-
-
-// })
-
-async function showMarker(name, id) {
-    console.log('type crime: ', name, id)
- const crimes =  await getCrimeType()
-
- console.log('crimes', crimes)
- const events = await getEvents()
-
- console.log('crimes',crimes )
- console.log('events',events )
-const arr=[]
- crimes.crimeType.map( item => {
-    console.log(item)
-    for( let key in  events) {
-        // console.log('value', key)
-        if (Array.isArray(events[key])) {
-            for (const value of events[key]) {
-                // console.log(value.affected_type);
-                if(value.affected_type) {
-                    // console.log(value.affected_type);
-
-                    if (value.affected_type === Number(id)) {
-                        // console.log('pushhhhhhh', value)
-                        arr.push(value)
-                    }
-                       
-
-                    // addMarker(value.lat, value.lon, value.event)
-                    // const myPos = {
-                    //     lat: value.lat,
-                    //     lng: value.lon
-                    //   };
-                    // new google.maps.Marker({
-
-                    //     position: myPos,
-                    //     map: map,
-                    //     title: value.event,
-                    //     icon: <div class="markerColor"></div>
-                    //   });
-                }
-                }
-                
-        }
-    }
- })
- console.log('arr', arr)
- return arr
-}
-
-function addMarker(lat, lng, title) {
-    console.log(' function addMarker')
-    if (typeof title !== 'undefined') {
-        title = title.toString();
-      } else {
-        title = '111'; // За замовчуванням, якщо title не вказано або він є undefined
-      }
-    var marker = new google.maps.Marker({
-      position: { lat, lng },
-      map: this.map,
-      title: title,
-      icon: '/img/circle30.png',
-      label: {
-        text: 'my text',
-        color: 'white'
-      }
-
-    });
-  }
 

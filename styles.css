@@ -248,6 +248,12 @@ margin: 2px;
     width: 100%;
 
 }
+.countText {
+    color: var( --grey-main-color);
+    font-family: var(--body-light-font);
+    font-size: var(--body-base-size);
+
+}
 #dropdown-container {
     height: 45px;
     padding: 10px, 38px, 10px, 20px;

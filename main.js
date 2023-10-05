@@ -1,5 +1,4 @@
 import { getCrimeType, getEvents } from './data.js';
-import  {addMarker} from './addMarker.js';
 
 
 export async function showMarker(name) {
@@ -19,7 +18,6 @@ const arr=[]
                 console.log(value.affected_type);
                 if(value.affected_type) {
                     arr.push(value)
-                    addMarker(value.lat, value.lon, value.event)
                     // const myPos = {
                     //     lat: value.lat,
                     //     lng: value.lon

@@ -1,5 +1,4 @@
 import { getCrimeType } from './data.js';
-import { showMarker } from './main.js'
 
 
 

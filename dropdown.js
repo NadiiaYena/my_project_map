@@ -1,4 +1,4 @@
-import { getCrimeType, getEvents } from './data.js';
+import { getEvents } from './data.js';
 
 
 class Dropdown {
@@ -14,6 +14,7 @@ class Dropdown {
     const textButton = document.createElement('div');
     textButton.textContent = text;
     textButton.classList.add('text-button');
+    textButton.id = text
   
     const angle = document.createElement('img');
     angle.src = '/img/angle-small-down.svg';
@@ -36,6 +37,7 @@ class Dropdown {
       const listItem = document.createElement('div');
       listItem.textContent = optionText;
       listItem.classList.add('dropdown-item');
+      listItem.id = text
       listItem.addEventListener('click', () => {
         // При кліку на варіант, встановлюємо вміст кнопки
         textButton.textContent = optionText; // Оновлюємо текст кнопки
